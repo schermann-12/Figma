@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HARRIOX GROUP PTE LTD – Premium Car Audio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C9A84C;--gold-light:#E8C96A;--gold-pale:#F5E6BA;--gold-dark:#8A6D2A;
+  --cream:#F9F5EC;--white:#FFFFFF;
+  --obsidian:#080808;--black:#0D0D0D;--dark1:#141414;--dark2:#1C1C1C;--dark3:#242424;
+  --text-dark:#1A1A1A;--text-mid:#555555;--text-light:#999999;
+  --border-dark:rgba(201,168,76,0.15);--border-light:rgba(201,168,76,0.3);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--obsidian);color:var(--white);overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),var(--gold-dark));border-radius:2px}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all 0.4s;padding:0}
+nav.scrolled{background:rgba(8,8,8,0.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--border-dark)}
+.nav-inner{max-width:1440px;width:100%;margin:0 auto;padding:0 48px;height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo-img{height:44px;width:auto;object-fit:contain;filter:brightness(1)}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+.nav-links>li>a{font-size:10.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);text-decoration:none;padding:8px 15px;position:relative;transition:color 0.25s}
+.nav-links>li>a::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:1px;background:var(--gold);transition:left 0.3s,right 0.3s}
+.nav-links>li>a:hover{color:var(--white)}
+.nav-links>li>a:hover::after{left:15px;right:15px}
+.has-drop{position:relative}
+.has-drop:hover .drop{opacity:1;pointer-events:all;transform:translateY(0)}
+.drop{position:absolute;top:calc(100% + 8px);left:0;background:rgba(14,14,14,0.98);border:1px solid var(--border-dark);border-top:2px solid var(--gold);min-width:210px;padding:10px 0;opacity:0;pointer-events:none;transform:translateY(-8px);transition:all 0.25s;list-style:none;backdrop-filter:blur(20px)}
+.drop li a{display:block;padding:9px 20px;font-size:10px;letter-spacing:2px;font-weight:600;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s,padding-left 0.2s;border-left:2px solid transparent}
+.drop li a:hover{color:var(--gold-light);padding-left:26px;border-left-color:var(--gold)}
+.nav-cta{background:transparent !important;border:1px solid var(--gold) !important;color:var(--gold) !important;padding:9px 22px !important;border-radius:2px;letter-spacing:2px !important}
+.nav-cta::after{display:none !important}
+.nav-cta:hover{background:var(--gold) !important;color:var(--obsidian) !important}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center}
+
+/* Deep cinematic layered background */
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 90% 70% at 65% 50%, rgba(201,168,76,0.055) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 80% at 0% 60%, rgba(201,168,76,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 50% 0%, rgba(255,255,255,0.015) 0%, transparent 50%),
+    linear-gradient(165deg, #0a0a08 0%, #111108 35%, #0d0d0a 65%, #080808 100%)
+}
+
+/* Diagonal grid lines — right side */
+.hero-grid{
+  position:absolute;top:0;right:0;width:60%;height:100%;
+  background:repeating-linear-gradient(-52deg,transparent,transparent 70px,rgba(201,168,76,0.022) 70px,rgba(201,168,76,0.022) 71px);
+  mask-image:linear-gradient(to left, rgba(0,0,0,0.7) 0%, transparent 80%)
+}
+
+/* Gold orb */
+.hero-orb{
+  position:absolute;right:5%;top:50%;transform:translateY(-50%);
+  width:680px;height:680px;border-radius:50%;
+  background:radial-gradient(circle, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 45%, transparent 70%);
+  filter:blur(50px)
+}
+
+/* Horizontal luxury line */
+.hero-line{
+  position:absolute;top:50%;left:0;right:0;height:1px;
+  background:linear-gradient(to right, transparent 0%, rgba(201,168,76,0.08) 30%, rgba(201,168,76,0.12) 55%, transparent 100%);
+  transform:translateY(-80px)
+}
+
+.hero-content{
+  position:relative;z-index:2;
+  max-width:1440px;width:100%;margin:0 auto;
+  padding:0 48px;padding-top:76px;
+  display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;min-height:100vh
+}
+.hero-left{animation:fadeUp 1.1s cubic-bezier(0.22,1,0.36,1) both}
+.hero-right{animation:fadeRight 1.3s cubic-bezier(0.22,1,0.36,1) 0.15s both}
+
+.hero-eyebrow{display:inline-flex;align-items:center;gap:14px;margin-bottom:30px}
+.hero-eyebrow-line{width:36px;height:1px;background:var(--gold)}
+.hero-eyebrow-text{font-size:9.5px;letter-spacing:5px;font-weight:600;color:var(--gold);text-transform:uppercase}
+
+.hero-h1-pre{
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(13px,1.1vw,16px);
+  font-weight:300;letter-spacing:6px;
+  color:rgba(255,255,255,0.35);
+  text-transform:uppercase;
+  margin-bottom:10px
+}
+.hero-h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(56px,7.5vw,108px);
+  font-weight:300;line-height:0.92;
+  color:var(--white);margin-bottom:10px;
+}
+.hero-h1-brand{
+  font-family:'Rajdhani',sans-serif;
+  font-size:clamp(42px,5.5vw,76px);
+  font-weight:700;letter-spacing:5px;
+  display:block;line-height:1;
+  background:linear-gradient(130deg, #F5E6BA 0%, #E8C96A 40%, #C9A84C 75%, #8A6D2A 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:6px
+}
+.hero-h1-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4vw,60px);
+  font-weight:300;font-style:italic;
+  color:rgba(255,255,255,0.75);display:block;line-height:1
+}
+
+.hero-desc{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(15px,1.3vw,19px);
+  font-style:italic;color:rgba(255,255,255,0.38);
+  letter-spacing:0.5px;line-height:1.85;
+  margin:28px 0 44px;max-width:460px
+}
+
+.hero-ctas{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+
+.btn-gold{
+  display:inline-flex;align-items:center;gap:12px;
+  background:linear-gradient(135deg,#E8C96A,#C9A84C);
+  color:var(--obsidian);
+  font-size:9.5px;font-weight:800;letter-spacing:3px;
+  text-transform:uppercase;text-decoration:none;
+  padding:16px 38px;border:none;cursor:pointer;border-radius:1px;
+  position:relative;overflow:hidden;
+  transition:transform 0.2s,box-shadow 0.2s;
+  box-shadow:0 4px 30px rgba(201,168,76,0.32)
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 50px rgba(201,168,76,0.5)}
+.btn-arrow{width:18px;height:1px;background:var(--obsidian);position:relative;transition:width 0.3s}
+.btn-arrow::after{content:'';position:absolute;right:-1px;top:-3px;border:3.5px solid transparent;border-left:5px solid var(--obsidian)}
+.btn-gold:hover .btn-arrow{width:26px}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:10px;
+  background:transparent;color:rgba(255,255,255,0.65);
+  font-size:9.5px;font-weight:600;letter-spacing:3px;
+  text-transform:uppercase;text-decoration:none;
+  padding:15px 30px;border:1px solid rgba(255,255,255,0.12);border-radius:1px;
+  transition:border-color 0.25s,color 0.25s;cursor:pointer
+}
+.btn-ghost:hover{border-color:rgba(201,168,76,0.45);color:var(--gold-pale)}
+
+/* Hero right: visual card panel */
+.hero-visual{
+  position:relative;
+  display:flex;flex-direction:column;gap:16px
+}
+.hero-main-card{
+  background:linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(201,168,76,0.04) 100%);
+  border:1px solid var(--border-dark);
+  border-radius:3px;padding:36px;
+  position:relative;overflow:hidden
+}
+.hero-main-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.hcard-label{font-size:8.5px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;font-weight:600;margin-bottom:20px}
+.hcard-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:300;font-style:italic;
+  color:rgba(255,255,255,0.8);line-height:1.5;margin-bottom:24px
+}
+.hcard-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;border-top:1px solid var(--border-dark);padding-top:24px}
+.hstat-num{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.hstat-label{font-size:8px;letter-spacing:2.5px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-top:4px}
+
+.hero-brands-row{
+  display:flex;gap:8px;flex-wrap:wrap
+}
+.hbrand-pill{
+  padding:7px 14px;
+  background:rgba(201,168,76,0.05);
+  border:1px solid rgba(201,168,76,0.14);
+  border-radius:1px;
+  font-size:9px;letter-spacing:2.5px;color:rgba(255,255,255,0.4);
+  text-transform:uppercase;font-weight:700;
+  transition:all 0.2s;cursor:default
+}
+.hbrand-pill:hover{border-color:rgba(201,168,76,0.35);color:var(--gold-light)}
+
+/* Scroll indicator */
+.hero-scroll{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:10px;z-index:3
+}
+.scroll-label{font-size:8px;letter-spacing:4px;color:rgba(255,255,255,0.25);text-transform:uppercase}
+.scroll-track{width:1px;height:52px;background:linear-gradient(to bottom,rgba(201,168,76,0.4),transparent);position:relative;overflow:hidden}
+.scroll-runner{position:absolute;top:0;left:0;right:0;height:14px;background:var(--gold);animation:scrollRun 2.2s ease-in-out infinite}
+@keyframes scrollRun{0%{top:-14px}100%{top:52px}}
+
+/* ─── MARQUEE ─── */
+.marquee-strip{
+  padding:16px 0;overflow:hidden;position:relative;
+  background:linear-gradient(90deg,var(--dark1) 0%,#18130a 50%,var(--dark1) 100%);
+  border-top:1px solid var(--border-dark);border-bottom:1px solid var(--border-dark)
+}
+.marquee-strip::before,.marquee-strip::after{content:'';position:absolute;top:0;bottom:0;width:140px;z-index:2}
+.marquee-strip::before{left:0;background:linear-gradient(to right,var(--dark1),transparent)}
+.marquee-strip::after{right:0;background:linear-gradient(to left,var(--dark1),transparent)}
+.marquee-track{display:flex;width:max-content;animation:marquee 32s linear infinite}
+.mitem{display:flex;align-items:center;padding:0 30px;border-right:1px solid rgba(201,168,76,0.12);font-size:9.5px;letter-spacing:4px;font-weight:700;color:rgba(201,168,76,0.45);text-transform:uppercase;white-space:nowrap;transition:color 0.2s}
+.mitem:hover{color:var(--gold-light)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─── SECTION COMMONS ─── */
+.section{padding:110px 0}
+.container{max-width:1440px;margin:0 auto;padding:0 48px}
+.sec-eyebrow{display:inline-flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-eyebrow-line{width:28px;height:1px;background:var(--gold)}
+.sec-eyebrow-text{font-size:9px;letter-spacing:5px;font-weight:700;color:var(--gold);text-transform:uppercase}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5vw,70px);font-weight:300;line-height:1.0;color:var(--white)}
+.sec-title em{font-style:italic;background:linear-gradient(135deg,var(--gold-pale),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sec-title strong{font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:2px;-webkit-text-fill-color:var(--white)}
+.sec-desc{font-size:13px;line-height:1.9;color:rgba(255,255,255,0.38);font-weight:300;max-width:500px;margin-top:12px;letter-spacing:0.3px}
+
+/* ─── CAR GRID ─── */
+.car-section{
+  background:linear-gradient(180deg,var(--obsidian) 0%,#0e0c06 50%,var(--obsidian) 100%);
+  position:relative
+}
+.car-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.25),transparent)}
+.car-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px}
+
+/* Grid layout matching soundupgrade-bayern.de: 3 columns, some wide */
+.car-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:3px;
+  background:rgba(201,168,76,0.06);
+  border-radius:4px;overflow:hidden
+}
+.car-wide{grid-column:span 2}
+
+.car-card{
+  position:relative;overflow:hidden;cursor:pointer;
+  background:var(--dark1);
+  transition:z-index 0s
+}
+.car-inner{position:relative;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:flex-end}
+.car-wide .car-inner{aspect-ratio:32/10}
+
+/* Cinematic automotive backgrounds */
+.car-bg{position:absolute;inset:0;transition:transform 0.65s cubic-bezier(0.22,1,0.36,1)}
+.car-card:hover .car-bg{transform:scale(1.06)}
+
+.bg-audi{background:radial-gradient(ellipse 90% 70% at 65% 55%, rgba(210,160,40,0.18) 0%, rgba(120,90,20,0.08) 40%, transparent 65%),linear-gradient(145deg,#09090700 0%,#181208 40%,#120e06 70%,#0a0806 100%)}
+.bg-bmw{background:radial-gradient(ellipse 80% 70% at 40% 60%, rgba(60,100,200,0.15) 0%, rgba(20,50,120,0.06) 45%, transparent 70%),linear-gradient(145deg,#07090f 0%,#0d1220 50%,#090c16 100%)}
+.bg-mercedes{background:radial-gradient(ellipse 80% 70% at 55% 50%, rgba(180,180,180,0.12) 0%, rgba(100,100,100,0.05) 45%, transparent 70%),linear-gradient(145deg,#0a0a0a 0%,#181818 50%,#0d0d0d 100%)}
+.bg-porsche{background:radial-gradient(ellipse 90% 70% at 55% 65%, rgba(200,60,20,0.16) 0%, rgba(120,30,10,0.07) 45%, transparent 65%),linear-gradient(145deg,#0f0806 0%,#200e09 50%,#150a07 100%)}
+.bg-cupra{background:radial-gradient(ellipse 85% 70% at 45% 60%, rgba(200,130,20,0.15) 0%, rgba(120,70,10,0.06) 45%, transparent 65%),linear-gradient(145deg,#0e0a04 0%,#1e1408 50%,#130d05 100%)}
+.bg-vwbus{background:radial-gradient(ellipse 80% 70% at 55% 45%, rgba(30,110,200,0.12) 0%, rgba(15,60,120,0.05) 45%, transparent 70%),linear-gradient(145deg,#060a10 0%,#0c1220 50%,#070c14 100%)}
+.bg-ineos{background:radial-gradient(ellipse 85% 70% at 60% 60%, rgba(40,170,80,0.1) 0%, rgba(20,90,40,0.04) 45%, transparent 70%),linear-gradient(145deg,#060e08 0%,#0e1c10 50%,#091410 100%)}
+.bg-fiat{background:radial-gradient(ellipse 80% 65% at 45% 60%, rgba(200,30,30,0.12) 0%, rgba(110,15,15,0.05) 45%, transparent 70%),linear-gradient(145deg,#0e0606 0%,#1e0c0c 50%,#130808 100%)}
+.bg-seat{background:radial-gradient(ellipse 80% 70% at 55% 55%, rgba(80,80,210,0.12) 0%, rgba(40,40,120,0.05) 45%, transparent 70%),linear-gradient(145deg,#07070f 0%,#0f0f1e 50%,#0a0a14 100%)}
+.bg-skoda{background:radial-gradient(ellipse 75% 65% at 55% 55%, rgba(20,160,100,0.1) 0%, rgba(10,80,50,0.04) 45%, transparent 70%),linear-gradient(145deg,#060e0a 0%,#0e1c14 50%,#091410 100%)}
+.bg-toyota{background:radial-gradient(ellipse 80% 65% at 45% 60%, rgba(200,30,30,0.1) 0%, rgba(110,15,15,0.04) 45%, transparent 70%),linear-gradient(145deg,#0e0808 0%,#1c1010 50%,#100909 100%)}
+.bg-sprinter{background:radial-gradient(ellipse 75% 65% at 50% 45%, rgba(160,160,160,0.09) 0%, rgba(80,80,80,0.04) 45%, transparent 70%),linear-gradient(145deg,#0a0a0a 0%,#181818 50%,#0f0f0f 100%)}
+
+/* Atmospheric depth overlay */
+.car-depth{
+  position:absolute;inset:0;
+  background:linear-gradient(145deg, rgba(201,168,76,0.02) 0%, transparent 40%, rgba(0,0,0,0.4) 100%);
+  transition:opacity 0.4s
+}
+.car-card:hover .car-depth{opacity:0.6}
+
+/* Car silhouette/icon */
+.car-icon{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:90px;opacity:0.14;filter:grayscale(1);
+  transition:opacity 0.4s,transform 0.55s cubic-bezier(0.22,1,0.36,1)
+}
+.car-wide .car-icon{font-size:130px}
+.car-card:hover .car-icon{opacity:0.3;transform:translateX(10px) scale(1.03)}
+
+/* Shimmer sweep */
+.car-shine{position:absolute;inset:0;background:linear-gradient(108deg,transparent 25%,rgba(201,168,76,0.07) 50%,transparent 75%);transform:translateX(-100%);transition:transform 0.7s}
+.car-card:hover .car-shine{transform:translateX(100%)}
+
+/* Gold corner accent */
+.car-corner{
+  position:absolute;top:0;left:0;
+  width:40px;height:40px;overflow:hidden;opacity:0;transition:opacity 0.3s
+}
+.car-corner::before{content:'';position:absolute;top:0;left:0;width:0;height:0;border-style:solid;border-width:40px 40px 0 0;border-color:var(--gold) transparent transparent transparent}
+.car-card:hover .car-corner{opacity:1}
+
+/* Bottom label */
+.car-label{
+  position:relative;z-index:2;width:100%;
+  padding:18px 22px;
+  background:linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 55%, transparent 100%);
+  display:flex;align-items:flex-end;justify-content:space-between
+}
+.car-name-txt{
+  font-family:'Rajdhani',sans-serif;
+  font-size:19px;font-weight:700;letter-spacing:3px;
+  color:var(--white);text-transform:uppercase;transition:color 0.25s;
+  display:flex;flex-direction:column;gap:2px
+}
+.car-card:hover .car-name-txt{color:var(--gold-light)}
+.car-pkg-hint{
+  font-size:8.5px;letter-spacing:2px;color:var(--gold);
+  text-transform:uppercase;font-weight:600;
+  opacity:0;transform:translateY(5px);transition:all 0.3s 0.05s
+}
+.car-card:hover .car-pkg-hint{opacity:1;transform:translateY(0)}
+.car-btn{
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:all 0.25s
+}
+.car-card:hover .car-btn{background:var(--gold);border-color:var(--gold);transform:rotate(45deg)}
+.car-btn svg{width:13px;height:13px;transition:fill 0.25s}
+.car-btn svg path{stroke:rgba(255,255,255,0.6);transition:stroke 0.25s}
+.car-card:hover .car-btn svg path{stroke:var(--obsidian)}
+
+/* ─── PACKAGES ─── */
+.pkg-section{
+  background:var(--cream);
+  position:relative;overflow:hidden
+}
+.pkg-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 100%, rgba(201,168,76,0.07) 0%, transparent 60%),linear-gradient(180deg,#F9F5EC 0%,#EFE8D4 100%)}
+.pkg-section .sec-eyebrow-line{background:var(--gold-dark)}
+.pkg-section .sec-eyebrow-text{color:var(--gold-dark)}
+.pkg-section .sec-title{color:var(--text-dark)}
+.pkg-section .sec-title em{background:linear-gradient(135deg,var(--gold-dark),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.pkg-section .sec-desc{color:var(--text-mid)}
+.pkg-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;position:relative;z-index:1}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1}
+
+.pkg-card{
+  background:var(--white);border:1px solid rgba(201,168,76,0.18);
+  border-radius:3px;overflow:hidden;position:relative;
+  transition:transform 0.35s cubic-bezier(0.22,1,0.36,1),box-shadow 0.35s;
+  box-shadow:0 4px 32px rgba(0,0,0,0.07)
+}
+.pkg-card:hover{transform:translateY(-8px);box-shadow:0 24px 70px rgba(0,0,0,0.13),0 0 0 1px rgba(201,168,76,0.28)}
+.pkg-card.featured{background:linear-gradient(165deg,#0d0d0d 0%,#1c1c1c 100%);border-color:var(--gold);box-shadow:0 8px 50px rgba(201,168,76,0.14)}
+.pkg-card.featured:hover{box-shadow:0 28px 80px rgba(201,168,76,0.22),0 0 0 1px var(--gold)}
+.pkg-topbar{height:3px;background:linear-gradient(90deg,#8A6D2A,#E8C96A)}
+.pkg-card.featured .pkg-topbar{background:linear-gradient(90deg,var(--gold-light),var(--gold-pale))}
+.pkg-body{padding:34px 30px}
+.pkg-tier{font-size:8.5px;letter-spacing:4px;font-weight:700;color:var(--gold-dark);text-transform:uppercase;margin-bottom:8px}
+.pkg-card.featured .pkg-tier{color:var(--gold)}
+.pkg-name{font-family:'Rajdhani',sans-serif;font-size:44px;font-weight:700;letter-spacing:3px;color:var(--text-dark);line-height:1;margin-bottom:12px}
+.pkg-card.featured .pkg-name{color:var(--white)}
+.pkg-desc{font-size:12px;line-height:1.85;color:var(--text-mid);font-weight:300;padding-bottom:22px;border-bottom:1px solid rgba(0,0,0,0.07);margin-bottom:22px}
+.pkg-card.featured .pkg-desc{color:rgba(255,255,255,0.42);border-bottom-color:rgba(201,168,76,0.15)}
+.pkg-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:30px}
+.pkg-list li{display:flex;align-items:flex-start;gap:11px;font-size:12px;line-height:1.65;color:var(--text-mid);font-weight:400}
+.pkg-card.featured .pkg-list li{color:rgba(255,255,255,0.55)}
+.pkg-check{width:18px;height:18px;flex-shrink:0;margin-top:1px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.pkg-card.featured .pkg-check{background:rgba(201,168,76,0.14);border-color:rgba(201,168,76,0.38)}
+.pkg-check svg{width:8px;height:8px}
+.pkg-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border-radius:2px;font-size:9.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;text-decoration:none;cursor:pointer;border:none;transition:all 0.25s}
+.pkg-cta-outline{background:transparent;border:1px solid rgba(201,168,76,0.28);color:var(--gold-dark)}
+.pkg-cta-outline:hover{background:rgba(201,168,76,0.06);border-color:var(--gold)}
+.pkg-cta-solid{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--obsidian);box-shadow:0 4px 22px rgba(201,168,76,0.35)}
+.pkg-cta-solid:hover{box-shadow:0 8px 42px rgba(201,168,76,0.55);transform:translateY(-1px)}
+.pkg-badge{position:absolute;top:18px;right:18px;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--obsidian);font-size:7.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 11px;border-radius:1px}
+
+/* ─── AUDIO BRANDS ─── */
+.brands-section{background:linear-gradient(180deg,var(--obsidian) 0%,var(--dark1) 100%);position:relative}
+.brands-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.28),transparent)}
+.brands-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--border-dark);border:1px solid var(--border-dark);border-radius:3px;overflow:hidden;margin-top:56px}
+.brand-tile{background:var(--dark1);padding:34px 18px;display:flex;flex-direction:column;align-items:center;gap:14px;text-decoration:none;transition:background 0.25s;cursor:pointer}
+.brand-tile:hover{background:var(--dark2)}
+.btile-icon{width:50px;height:50px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:21px;transition:all 0.25s}
+.brand-tile:hover .btile-icon{border-color:rgba(201,168,76,0.38);background:rgba(201,168,76,0.1)}
+.btile-name{font-family:'Rajdhani',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.45);text-transform:uppercase;text-align:center;transition:color 0.25s}
+.brand-tile:hover .btile-name{color:var(--gold-light)}
+.btile-type{font-size:8.5px;letter-spacing:1.5px;color:rgba(255,255,255,0.22);text-transform:uppercase;text-align:center}
+
+/* ─── WHY HARRIOX ─── */
+.why-section{background:var(--cream);position:relative}
+.why-section::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,#F9F5EC 0%,#EDE6D0 100%)}
+.why-section .sec-eyebrow-line{background:var(--gold-dark)}
+.why-section .sec-eyebrow-text{color:var(--gold-dark)}
+.why-section .sec-title{color:var(--text-dark)}
+.why-section .sec-desc{color:var(--text-mid)}
+.why-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
+.why-features{display:flex;flex-direction:column;gap:0;margin-top:36px}
+.why-feat{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid rgba(0,0,0,0.06);transition:padding-left 0.25s;cursor:default}
+.why-feat:hover{padding-left:8px}
+.why-feat:last-child{border-bottom:none}
+.wf-num{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:rgba(201,168,76,0.28);line-height:1;flex-shrink:0;width:42px}
+.wf-title{font-size:12.5px;font-weight:700;letter-spacing:1px;color:var(--text-dark);margin-bottom:4px;text-transform:uppercase}
+.wf-text{font-size:12px;line-height:1.85;color:var(--text-mid);font-weight:300}
+.why-right{background:linear-gradient(145deg,var(--obsidian),var(--dark2));border:1px solid var(--border-dark);border-radius:3px;padding:44px;position:relative;overflow:hidden}
+.why-right::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.why-stats{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.wstat-num{font-family:'Cormorant Garamond',serif;font-size:58px;font-weight:300;background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.wstat-label{font-size:8.5px;letter-spacing:3px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-top:4px;font-weight:600}
+.why-divider{height:1px;background:var(--border-dark);margin:30px 0}
+.why-quote{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,0.65);line-height:1.65;margin-bottom:14px}
+.why-attr{font-size:9.5px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:600}
+
+/* ─── CTA STRIP ─── */
+.cta-strip{padding:96px 0;background:linear-gradient(135deg,var(--obsidian) 0%,#0f0d06 50%,var(--obsidian) 100%);position:relative;overflow:hidden;text-align:center}
+.cta-strip-bg{position:absolute;inset:0;background:radial-gradient(ellipse 45% 80% at 50% 50%, rgba(201,168,76,0.065) 0%, transparent 60%)}
+.cta-strip-top{position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.cta-strip-btm{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dark),transparent)}
+.cta-inner{position:relative;z-index:1}
+.cta-eyebrow{font-size:9px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;font-weight:600;margin-bottom:18px}
+.cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5.5vw,72px);font-weight:300;color:var(--white);line-height:1.08;margin-bottom:8px}
+.cta-title em{font-style:italic;background:linear-gradient(135deg,var(--gold-pale),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta-sub{font-size:13px;color:rgba(255,255,255,0.3);max-width:420px;margin:14px auto 38px;line-height:1.85}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* ─── FOOTER ─── */
+footer{background:var(--obsidian);border-top:1px solid var(--border-dark);padding:68px 0 36px}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:56px}
+.footer-logo-img{height:40px;width:auto;object-fit:contain;margin-bottom:14px;filter:brightness(0.9)}
+.footer-tagline{font-size:8.5px;letter-spacing:3.5px;color:var(--gold);text-transform:uppercase;margin-bottom:14px;font-weight:600}
+.footer-desc{font-size:12px;line-height:1.9;color:rgba(255,255,255,0.28);max-width:230px}
+.footer-col-title{font-size:9px;letter-spacing:4px;font-weight:700;color:rgba(255,255,255,0.28);text-transform:uppercase;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border-dark)}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.32);text-decoration:none;transition:color 0.2s;letter-spacing:0.3px}
+.footer-links a:hover{color:var(--gold-light)}
+.footer-bottom{border-top:1px solid var(--border-dark);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:10.5px;color:rgba(255,255,255,0.2);letter-spacing:0.4px}
+.social-row{display:flex;gap:8px}
+.social-btn{width:35px;height:35px;background:rgba(201,168,76,0.04);border:1px solid var(--border-dark);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(255,255,255,0.28);text-decoration:none;transition:all 0.2s;font-weight:700}
+.social-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ─── MODAL ─── */
+.modal-backdrop{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.88);backdrop-filter:blur(14px);align-items:center;justify-content:center;padding:24px}
+.modal-backdrop.open{display:flex}
+.modal{background:var(--white);border-radius:3px;max-width:580px;width:100%;padding:48px;position:relative;animation:modalIn 0.32s cubic-bezier(0.22,1,0.36,1) both}
+.modal-bar{height:3px;background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));position:absolute;top:0;left:0;right:0;border-radius:3px 3px 0 0}
+.modal-close{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.1);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;color:var(--text-mid);transition:all 0.2s}
+.modal-close:hover{border-color:var(--gold);color:var(--gold-dark)}
+.modal-eyebrow{font-size:8.5px;letter-spacing:4px;color:var(--gold-dark);text-transform:uppercase;font-weight:700;margin-bottom:7px}
+.modal-title{font-family:'Rajdhani',sans-serif;font-size:38px;font-weight:700;letter-spacing:2px;color:var(--text-dark);margin-bottom:28px}
+.m2col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.m-group{margin-bottom:14px}
+.m-label{display:block;font-size:8.5px;letter-spacing:3px;font-weight:700;color:var(--text-mid);text-transform:uppercase;margin-bottom:7px}
+.m-input,.m-select,.m-textarea{width:100%;background:#F9F5EC;border:1px solid rgba(0,0,0,0.1);border-radius:2px;color:var(--text-dark);padding:11px 13px;font-family:'Montserrat',sans-serif;font-size:13px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;appearance:none}
+.m-input:focus,.m-select:focus,.m-textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.1)}
+.m-textarea{resize:vertical;min-height:88px}
+.m-submit{width:100%;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--obsidian);font-size:9.5px;font-weight:800;letter-spacing:3px;text-transform:uppercase;padding:15px;border:none;cursor:pointer;border-radius:2px;transition:all 0.25s;box-shadow:0 4px 22px rgba(201,168,76,0.3)}
+.m-submit:hover{box-shadow:0 8px 40px rgba(201,168,76,0.5);transform:translateY(-1px)}
+@keyframes modalIn{from{opacity:0;transform:scale(0.96) translateY(14px)}to{opacity:1;transform:scale(1) translateY(0)}}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  .car-grid{grid-template-columns:repeat(2,1fr)}
+  .car-wide{grid-column:span 1}
+  .car-wide .car-inner{aspect-ratio:16/10}
+  .brands-grid{grid-template-columns:repeat(4,1fr)}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr;padding-bottom:80px}
+  .hero-right{display:none}
+  .car-grid{grid-template-columns:repeat(2,1fr)}
+  .pkg-grid{grid-template-columns:1fr}
+  .why-inner{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:600px){
+  .car-grid{grid-template-columns:1fr}
+  .brands-grid{grid-template-columns:repeat(2,1fr)}
+  .container{padding:0 20px}
+  .footer-inner{grid-template-columns:1fr}
+  .m2col{grid-template-columns:1fr}
+  .nav-inner{padding:0 20px}
+}
+
+.nav-logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon-img{height:42px;width:42px;object-fit:contain;border-radius:4px}
+.nav-logo-text{display:flex;flex-direction:column;gap:0px}
+.nav-logo-main{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;letter-spacing:4px;background:linear-gradient(130deg,#F5E6BA 0%,#E8C96A 40%,#C9A84C 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1}
+.nav-logo-sub{font-size:7px;letter-spacing:3px;color:rgba(255,255,255,0.4);text-transform:uppercase;font-weight:600;line-height:1}
+
+.footer-logo-wrap{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.footer-icon-img{height:46px;width:46px;object-fit:contain;border-radius:4px}
+.footer-logo-text-wrap{display:flex;flex-direction:column;gap:2px}
+.footer-logo-main{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;letter-spacing:4px;background:linear-gradient(130deg,#F5E6BA 0%,#E8C96A 40%,#C9A84C 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.footer-logo-sub{font-size:7px;letter-spacing:3px;color:rgba(255,255,255,0.35);text-transform:uppercase;font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo-wrap"><img src="data:image/png;base64,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" alt="Harriox Group Pte Ltd" class="logo-icon-img"></a>
+    <ul class="nav-links">
+      <li><a href="#">Start</a></li>
+      <li class="has-drop">
+        <a href="#cars">Sound Packages ▾</a>
+        <ul class="drop">
+          <li><a href="#" onclick="openModal('Audi','')">Audi</a></li>
+          <li><a href="#" onclick="openModal('BMW','')">BMW</a></li>
+          <li><a href="#" onclick="openModal('Mercedes','')">Mercedes</a></li>
+          <li><a href="#" onclick="openModal('Mercedes Sprinter','')">Mercedes Sprinter</a></li>
+          <li><a href="#" onclick="openModal('VW Bus','')">VW Bus</a></li>
+          <li><a href="#" onclick="openModal('Seat','')">Seat</a></li>
+          <li><a href="#" onclick="openModal('Skoda','')">Skoda</a></li>
+          <li><a href="#" onclick="openModal('Toyota','')">Toyota</a></li>
+          <li><a href="#" onclick="openModal('Fiat','')">Fiat</a></li>
+          <li><a href="#" onclick="openModal('Cupra','')">Cupra</a></li>
+          <li><a href="#" onclick="openModal('Porsche','')">Porsche</a></li>
+          <li><a href="#" onclick="openModal('Ineos Grenadier','')">Ineos Grenadier</a></li>
+        </ul>
+      </li>
+      <li class="has-drop">
+        <a href="#brands">Brands ▾</a>
+        <ul class="drop">
+          <li><a href="#">ACCUTON</a></li><li><a href="#">BLAM</a></li>
+          <li><a href="#">BRAX</a></li><li><a href="#">HELIX</a></li>
+          <li><a href="#">MATCH</a></li><li><a href="#">RAMM AUDIO</a></li>
+          <li><a href="#">VIABLUE</a></li>
+        </ul>
+      </li>
+      <li class="has-drop">
+        <a href="#">Insulation ▾</a>
+        <ul class="drop">
+          <li><a href="#">Insulation Packages</a></li>
+          <li><a href="#">Door Treatment</a></li>
+          <li><a href="#">Floor Treatment</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Gallery</a></li>
+      <li class="has-drop">
+        <a href="#">About Us ▾</a>
+        <ul class="drop">
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Authorised Dealers</a></li>
+          <li><a href="#">Warranty Policy</a></li>
+          <li><a href="#">Legal Notice</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="#" class="nav-cta" onclick="openModal('','');return false;">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-line"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span class="hero-eyebrow-text">Singapore · Premium Car Audio</span>
+      </div>
+
+      <div class="hero-h1-pre">Experience the Difference</div>
+      <h1 class="hero-h1">
+        <span class="hero-h1-brand">HARRIOX</span>
+        <span class="hero-h1-sub">Pure Sound,<br>Engineered</span>
+      </h1>
+
+      <p class="hero-desc">
+        Precision audio upgrades tailored to your exact vehicle model.<br>
+        Authorised dealer for Europe's most prestigious car audio brands.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#cars" class="btn-gold">
+          <span>Explore Sound Packages</span>
+          <div class="btn-arrow"></div>
+        </a>
+        <a href="#" class="btn-ghost" onclick="openModal('','');return false;">Request a Quote</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-visual">
+        <div class="hero-main-card">
+          <div class="hcard-label">Why Harriox</div>
+          <div class="hcard-tagline">"Like a concert hall<br>placed inside your car."</div>
+          <div class="hcard-stats">
+            <div><div class="hstat-num">12+</div><div class="hstat-label">Car Brands</div></div>
+            <div><div class="hstat-num">7</div><div class="hstat-label">Audio Brands</div></div>
+            <div><div class="hstat-num">3</div><div class="hstat-label">Package Tiers</div></div>
+          </div>
+        </div>
+        <div class="hero-brands-row">
+          <span class="hbrand-pill">ACCUTON</span>
+          <span class="hbrand-pill">BLAM</span>
+          <span class="hbrand-pill">BRAX</span>
+          <span class="hbrand-pill">HELIX</span>
+          <span class="hbrand-pill">MATCH</span>
+          <span class="hbrand-pill">RAMM</span>
+          <span class="hbrand-pill">VIABLUE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span class="scroll-label">Scroll</span>
+    <div class="scroll-track"><div class="scroll-runner"></div></div>
+  </div>
+</section>
+
+<!-- ═══ MARQUEE ═══ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="mitem">ACCUTON</span><span class="mitem">BLAM</span><span class="mitem">BRAX</span>
+    <span class="mitem">HELIX</span><span class="mitem">MATCH</span><span class="mitem">RAMM AUDIO</span>
+    <span class="mitem">VIABLUE</span><span class="mitem">AUDI</span><span class="mitem">BMW</span>
+    <span class="mitem">MERCEDES</span><span class="mitem">PORSCHE</span><span class="mitem">CUPRA</span>
+    <span class="mitem">HARRIOX GROUP</span><span class="mitem">SINGAPORE</span>
+    <span class="mitem">ACCUTON</span><span class="mitem">BLAM</span><span class="mitem">BRAX</span>
+    <span class="mitem">HELIX</span><span class="mitem">MATCH</span><span class="mitem">RAMM AUDIO</span>
+    <span class="mitem">VIABLUE</span><span class="mitem">AUDI</span><span class="mitem">BMW</span>
+    <span class="mitem">MERCEDES</span><span class="mitem">PORSCHE</span><span class="mitem">CUPRA</span>
+    <span class="mitem">HARRIOX GROUP</span><span class="mitem">SINGAPORE</span>
+  </div>
+</div>
+
+<!-- ═══ CAR BRAND GRID ═══ -->
+<section class="section car-section" id="cars">
+  <div class="container">
+    <div class="car-header">
+      <div>
+        <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span class="sec-eyebrow-text">By Vehicle Model</span></div>
+        <div class="sec-title">Sound <em>Packages</em></div>
+        <p class="sec-desc">Select your vehicle to explore precision audio packages built specifically for your model.</p>
+      </div>
+      <a href="#" class="btn-ghost">View All 12 Models</a>
+    </div>
+
+    <div class="car-grid">
+      <!-- ROW 1: Audi (wide) + BMW + Mercedes -->
+      <div class="car-card car-wide" onclick="openModal('Audi','')">
+        <div class="car-inner">
+          <div class="car-bg bg-audi"></div>
+          <div class="car-depth"></div>
+          <div class="car-icon">🚗</div>
+          <div class="car-shine"></div>
+          <div class="car-corner"></div>
+          <div class="car-label">
+            <div class="car-name-txt">Audi<div class="car-pkg-hint">3 Packages Available</div></div>
+            <div class="car-btn"><svg viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 6l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+        </div>
+      </div>
+      <div class="car-card" onclick="openModal('BMW','')">
+        <div class="car-inner">
+          <div class="car-bg bg-bmw"></div><div class="car-depth"></div><div class="car-icon">🚙</div><div class="car-shine"></div><div class="car-corner"></div>
+          <div class="car-label"><div class="car-name-txt">BMW<div class="car-pkg-hint">3 Packages Available</div></div><div class="car-btn"><svg viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 6l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        </div>
+      </div>
+
+      <!-- ROW 2: Mercedes + Porsche + Cupra (wide) -->
+      <div class="car-card" onclick="openModal('Mercedes','')">
+        <div class="car-inner">
+          <div class="car-bg bg-mercedes"></div><div class="car-depth"></div><div class="car-icon">🚗</div><div class="car-shine"></div><div class="car-corner"></div>
+          <div class="car-label"><div class="car-name-txt">Mercedes<div class="car-pkg-hint">3 Packages Available</div></div><div class="car-btn"><svg viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 6l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        </div>
+      </div>
+      <div class="car-card" onclick="openModal('Porsche','')">
+        <div class="car-inner">
+          <div class="car-bg bg-porsche"></div><div class="car-depth"></div><div class="car-icon">🏎️</div><div class="car-shine"></div><div class="car-corner"></div>
+          <div class="car-label"><div class="car-name-txt">Porsche<div class="car-pkg-hint">3 Packages Available</div></div><div class="car-btn"><svg viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 6l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        </div>
+      </div>
+      <div class="car-card car-wide" onclick="openModal('Cupra','')">
+        <div class="car-inner">
+          <div class="car-bg bg-cupra"></div><div class="car-depth"></div><div class="car-icon">🏁</div><div class="car-shine"></div><div class="car-corner"></div>
+          <div class="car-label"><div class="car-name-txt">Cupra<div class="car-pkg-hint">3 Packages Available</div></div><div class="car-btn"><svg viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 6l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        </div>
+      </div>
+
+      <!-- ROW 3: VW Bus (wide) + Ineos + Fiat -->
+      <div class="car-card car-wide" onclick="openModal('VW Bus','')">
+        <div class="car-inner">
+          <div class="car-bg bg-vwbus"></div><div class="car-depth"></div><div class="car-icon">🚌</div><div class="car-shine"></div><div class="car-corner"></div>
+          <div class="car-label"><div class="car-name-txt">VW Bus<div class="car-pkg-hint">3 Packages Available</div></div><div class="car-btn"><svg viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 6l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        </div>
+      </div>
+      <div class="car-card" onclick="openModal('Ineos Grenadier','')">
+        <div class="car-inner">
+          <div class="car-bg bg-ineos"></div><div class="car-depth"></div><div class="car-icon">🚙</div><div class="car-shine"></div><div class="car-corner"></div>
+          <div class="car-label"><div class="car-name-txt">Ineos Grenadier<div class="car-pkg-hint">3 Packages Available</div></div><div class="car-btn"><svg viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 6l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        </div>
+      </div>
+
+      <!-- ROW 4: Fiat + Seat + Skoda + Toyota + Sprinter (smaller) -->
+      <div class="car-card" onclick="openModal('Fiat','')">
+        <div class="car-inner">
+          <div class="car-bg bg-fiat"></div><div class="car-depth"></div><div class="car-icon">🚗</div><div class="car-shine"></div><div class="car-corner"></div>
+          <div class="car-label"><div class="car-name-txt">Fiat<div class="car-pkg-hint">3 Packages Available</div></div><div class="car-btn"><svg viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 6l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        </div>
+      </div>
+      <div class="car-card" onclick="openModal('Seat','')">
+        <div class="car-inner">
+          <div class="car-bg bg-seat"></div><div class="car-depth"></div><div class="car-icon">🚗</div><div class="car-shine"></div><div class="car-corner"></div>
+          <div class="car-label"><div class="car-name-txt">Seat<div class="car-pkg-hint">3 Packages Available</div></div><div class="car-btn"><svg viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 6l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        </div>
+      </div>
+      <div class="car-card" onclick="openModal('Skoda','')">
+        <div class="car-inner">
+          <div class="car-bg bg-skoda"></div><div class="car-depth"></div><div class="car-icon">🚗</div><div class="car-shine"></div><div class="car-corner"></div>
+          <div class="car-label"><div class="car-name-txt">Skoda<div class="car-pkg-hint">3 Packages Available</div></div><div class="car-btn"><svg viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 6l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        </div>
+      </div>
+      <div class="car-card" onclick="openModal('Toyota','')">
+        <div class="car-inner">
+          <div class="car-bg bg-toyota"></div><div class="car-depth"></div><div class="car-icon">🚗</div><div class="car-shine"></div><div class="car-corner"></div>
+          <div class="car-label"><div class="car-name-txt">Toyota<div class="car-pkg-hint">3 Packages Available</div></div><div class="car-btn"><svg viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 6l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        </div>
+      </div>
+      <div class="car-card" onclick="openModal('Mercedes Sprinter','')">
+        <div class="car-inner">
+          <div class="car-bg bg-sprinter"></div><div class="car-depth"></div><div class="car-icon">🚐</div><div class="car-shine"></div><div class="car-corner"></div>
+          <div class="car-label"><div class="car-name-txt">M. Sprinter<div class="car-pkg-hint">3 Packages Available</div></div><div class="car-btn"><svg viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 6l4 4-4 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PACKAGE TIERS ═══ -->
+<section class="section pkg-section" id="packages">
+  <div class="container">
+    <div class="pkg-header">
+      <div>
+        <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span class="sec-eyebrow-text">Choose Your Level</span></div>
+        <div class="sec-title" style="color:var(--text-dark)">Package <em>Tiers</em></div>
+        <p class="sec-desc" style="color:var(--text-mid)">Three tiers of audio excellence — each delivering a transformative listening experience for your drive.</p>
+      </div>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <div class="pkg-topbar"></div>
+        <div class="pkg-body">
+          <div class="pkg-tier">Entry Level</div>
+          <div class="pkg-name">ADVANCED</div>
+          <p class="pkg-desc">The ideal starting point for a genuine uplift in sound quality without compromising on craftsmanship.</p>
+          <ul class="pkg-list">
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>2-way component speaker system</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>Digital signal processing (DSP)</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>Vehicle-specific mounting hardware</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>Professional installation</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>Basic acoustic tuning</li>
+          </ul>
+          <a href="#" class="pkg-cta pkg-cta-outline" onclick="openModal('','Advanced');return false;">Request Inquiry</a>
+        </div>
+      </div>
+
+      <div class="pkg-card featured">
+        <div class="pkg-topbar"></div>
+        <div class="pkg-badge">Most Popular</div>
+        <div class="pkg-body">
+          <div class="pkg-tier">Mid Range</div>
+          <div class="pkg-name">PREMIUM</div>
+          <p class="pkg-desc">Exceptional clarity, staging and depth for the discerning listener who refuses to settle.</p>
+          <ul class="pkg-list">
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>3-way component speaker system</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>Advanced DSP + acoustic optimisation</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>Subwoofer integration</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>Custom sound staging</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>Sound insulation treatment</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>1-year parts warranty</li>
+          </ul>
+          <a href="#" class="pkg-cta pkg-cta-solid" onclick="openModal('',' + "'Premium'" + ');return false;">Request Inquiry</a>
+        </div>
+      </div>
+
+      <div class="pkg-card">
+        <div class="pkg-topbar"></div>
+        <div class="pkg-body">
+          <div class="pkg-tier">Top Tier</div>
+          <div class="pkg-name">HIGH END</div>
+          <p class="pkg-desc">The pinnacle of in-car audio. A reference-grade listening environment with no compromises.</p>
+          <ul class="pkg-list">
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>Full ACCUTON / BLAM speaker array</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>HELIX / BRAX DSP + amplification</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>Full sound insulation package</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>Bespoke subwoofer enclosure</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>Professional calibration &amp; tuning</li>
+            <li><div class="pkg-check"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>2-year premium warranty</li>
+          </ul>
+          <a href="#" class="pkg-cta pkg-cta-outline" onclick="openModal('',' + "'High End'" + ');return false;">Request Inquiry</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AUDIO BRANDS ═══ -->
+<section class="section brands-section" id="brands">
+  <div class="container">
+    <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span class="sec-eyebrow-text">Authorised Dealer</span></div>
+    <div class="sec-title">Audio <em>Brands</em></div>
+    <p class="sec-desc">We are the authorised Singapore dealer for Europe's most prestigious car audio manufacturers.</p>
+    <div class="brands-grid">
+      <a href="#" class="brand-tile"><div class="btile-icon">🔊</div><div class="btile-name">ACCUTON</div><div class="btile-type">High-End Drivers</div></a>
+      <a href="#" class="brand-tile"><div class="btile-icon">🎵</div><div class="btile-name">BLAM</div><div class="btile-type">Component Systems</div></a>
+      <a href="#" class="brand-tile"><div class="btile-icon">⚡</div><div class="btile-name">BRAX</div><div class="btile-type">Amplifiers</div></a>
+      <a href="#" class="brand-tile"><div class="btile-icon">🎛️</div><div class="btile-name">HELIX</div><div class="btile-type">DSP Processors</div></a>
+      <a href="#" class="brand-tile"><div class="btile-icon">📻</div><div class="btile-name">MATCH</div><div class="btile-type">OEM Integration</div></a>
+      <a href="#" class="brand-tile"><div class="btile-icon">🔉</div><div class="btile-name">RAMM AUDIO</div><div class="btile-type">Subwoofers</div></a>
+      <a href="#" class="brand-tile"><div class="btile-icon">🔌</div><div class="btile-name">VIABLUE</div><div class="btile-type">Cables &amp; Connectors</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY HARRIOX ═══ -->
+<section class="section why-section">
+  <div class="container">
+    <div class="why-inner">
+      <div>
+        <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span class="sec-eyebrow-text">Why Choose Us</span></div>
+        <div class="sec-title" style="color:var(--text-dark)">Precision <em>Beyond</em><br><strong>Standards</strong></div>
+        <p class="sec-desc" style="color:var(--text-mid)">Every installation is approached as a bespoke commission — vehicle-specific, acoustically measured, and meticulously executed.</p>
+        <div class="why-features">
+          <div class="why-feat"><div class="wf-num">01</div><div><div class="wf-title">Vehicle-Specific Engineering</div><div class="wf-text">Custom mounting solutions and tuning profiles developed for each exact car model and year.</div></div></div>
+          <div class="why-feat"><div class="wf-num">02</div><div><div class="wf-title">Authorised Brand Dealer</div><div class="wf-text">All components are genuine, fully warranted, and sourced directly from manufacturers.</div></div></div>
+          <div class="why-feat"><div class="wf-num">03</div><div><div class="wf-title">Certified Technicians</div><div class="wf-text">Factory-trained installers using precision tools for a clean, invisible, professional finish.</div></div></div>
+          <div class="why-feat"><div class="wf-num">04</div><div><div class="wf-title">Post-Installation Support</div><div class="wf-text">Comprehensive tuning, calibration, and warranty coverage after every installation.</div></div></div>
+        </div>
+      </div>
+      <div class="why-right">
+        <div class="why-stats">
+          <div><div class="wstat-num">12+</div><div class="wstat-label">Car Brands</div></div>
+          <div><div class="wstat-num">7</div><div class="wstat-label">Audio Brands</div></div>
+          <div><div class="wstat-num">3</div><div class="wstat-label">Package Tiers</div></div>
+          <div><div class="wstat-num">100<span style="font-size:28px">%</span></div><div class="wstat-label">Certified</div></div>
+        </div>
+        <div class="why-divider"></div>
+        <div class="why-quote">"The transformation was extraordinary — like a concert hall had been installed in my car."</div>
+        <div class="why-attr">— Verified Customer, Audi Q8</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA STRIP ═══ -->
+<section class="cta-strip">
+  <div class="cta-strip-bg"></div><div class="cta-strip-top"></div><div class="cta-strip-btm"></div>
+  <div class="container cta-inner">
+    <div class="cta-eyebrow">Ready to Elevate Your Drive?</div>
+    <div class="cta-title">Experience <em>Sound</em><br>Like Never Before</div>
+    <p class="cta-sub">Send us an inquiry and our specialists will craft a package recommendation tailored to your exact vehicle.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-gold" onclick="openModal('','');return false;"><span>Request a Quote</span><div class="btn-arrow"></div></a>
+      <a href="#cars" class="btn-ghost">Browse Sound Packages</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo-wrap"><img src="data:image/png;base64,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" alt="Harriox Group Pte Ltd" class="footer-icon-img"></div></div>
+        <div class="footer-tagline">Premium Car Audio · Singapore</div>
+        <p class="footer-desc">Authorised dealer for Europe's finest car audio brands. Precision installations tailored to your vehicle model.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Sound Packages</div>
+        <ul class="footer-links">
+          <li><a href="#" onclick="openModal('Audi','');return false;">Audi</a></li>
+          <li><a href="#" onclick="openModal('BMW','');return false;">BMW</a></li>
+          <li><a href="#" onclick="openModal('Mercedes','');return false;">Mercedes</a></li>
+          <li><a href="#" onclick="openModal('Porsche','');return false;">Porsche</a></li>
+          <li><a href="#" onclick="openModal('Cupra','');return false;">Cupra</a></li>
+          <li><a href="#cars">View All →</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Audio Brands</div>
+        <ul class="footer-links">
+          <li><a href="#">ACCUTON</a></li><li><a href="#">BLAM</a></li>
+          <li><a href="#">BRAX</a></li><li><a href="#">HELIX</a></li>
+          <li><a href="#">MATCH</a></li><li><a href="#">RAMM AUDIO</a></li>
+          <li><a href="#">VIABLUE</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Built-in Gallery</a></li>
+          <li><a href="#">Authorised Dealers</a></li>
+          <li><a href="#">Warranty Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Legal Notice</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Harriox Group Pte Ltd · UEN: 202XXXXXX · Singapore</div>
+      <div class="social-row">
+        <a href="#" class="social-btn">FB</a>
+        <a href="#" class="social-btn">IG</a>
+        <a href="#" class="social-btn">YT</a>
+        <a href="#" class="social-btn">TW</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ MODAL ═══ -->
+<div class="modal-backdrop" id="modal" onclick="closeOutside(event)">
+  <div class="modal">
+    <div class="modal-bar"></div>
+    <div class="modal-close" onclick="closeModal()">✕</div>
+    <div class="modal-eyebrow" id="m-eyebrow">Sound Package Inquiry</div>
+    <div class="modal-title" id="m-title">Request a Quote</div>
+    <div class="m2col">
+      <div class="m-group"><label class="m-label">First Name</label><input class="m-input" type="text" placeholder="John"></div>
+      <div class="m-group"><label class="m-label">Last Name</label><input class="m-input" type="text" placeholder="Doe"></div>
+    </div>
+    <div class="m-group"><label class="m-label">Email Address</label><input class="m-input" type="email" placeholder="john@example.com"></div>
+    <div class="m-group"><label class="m-label">Phone Number</label><input class="m-input" type="tel" placeholder="+65 9xxx xxxx"></div>
+    <div class="m2col">
+      <div class="m-group">
+        <label class="m-label">Car Brand</label>
+        <select class="m-select" id="m-brand">
+          <option value="">Select brand...</option>
+          <option>Audi</option><option>BMW</option><option>Mercedes</option>
+          <option>Mercedes Sprinter</option><option>VW Bus</option><option>Seat</option>
+          <option>Skoda</option><option>Toyota</option><option>Fiat</option>
+          <option>Cupra</option><option>Porsche</option><option>Ineos Grenadier</option>
+        </select>
+      </div>
+      <div class="m-group">
+        <label class="m-label">Package</label>
+        <select class="m-select" id="m-pkg">
+          <option value="">Select package...</option>
+          <option>Advanced</option><option>Premium</option><option>High End</option>
+        </select>
+      </div>
+    </div>
+    <div class="m-group"><label class="m-label">Vehicle Model &amp; Year</label><input class="m-input" type="text" placeholder="e.g. Audi A6 2022"></div>
+    <div class="m-group"><label class="m-label">Message</label><textarea class="m-textarea" placeholder="Tell us about your requirements..."></textarea></div>
+    <button class="m-submit" onclick="submitForm()">Submit Inquiry</button>
+  </div>
+</div>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
+document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+
+function openModal(brand,pkg){
+  const el=document.getElementById('modal');
+  document.getElementById('m-eyebrow').textContent=brand?brand+' — Sound Package Inquiry':'Sound Package Inquiry';
+  document.getElementById('m-title').textContent=brand?'Inquire: '+brand:'Request a Quote';
+  if(brand)document.getElementById('m-brand').value=brand;
+  if(pkg)document.getElementById('m-pkg').value=pkg;
+  el.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}
+function closeOutside(e){if(e.target===document.getElementById('modal'))closeModal()}
+function submitForm(){closeModal();setTimeout(()=>alert('Thank you! Your inquiry has been received. A specialist will contact you within 1 business day.'),200)}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+</body>
+</html>
